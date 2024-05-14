@@ -132,6 +132,14 @@ function Pedido(cliente, restaurante, detallesPedido, estadoPedido, repartidor){
     this.repartidor = repartidor
 }
 
+Pedido.prototype.actualizarEstado = function (){
+    console.log("Actualizando estado del pedido...")
+}
+
+Pedido.prototype.calcularTotal = function (){
+    console.log("El valor total del pedido es: COP x")
+}
+
 // PROBANDO PROTOTIPOS
 console.log("Probando Menus\n\n")
 menu1 = new MenuFisico("El menu sancochoso", "Este es menu fisico para describir diferentes tipos de sanchosito")
@@ -155,12 +163,6 @@ cliente1 = new Cliente("Erick el cliente", "erickcliente@gmail.com", 123, "av si
 repartidor1 = new Repartidor("Fede el repartidor", "federepartidor@gmail.com", 123, "mazda 323", true)
 pedidoDigital = new Pedido(cliente1, repartidor1, "Este es un pedido virtual de aguacates", "En curso", repartidor1)
 
-pedidoDigital.prototype.actualizarEstado = function (){
-    console.log("Actualizando estado del pedido...")
-}
 
-pedidoDigital.prototype.calcularTotal = function (){
-    console.log("El valor total del pedido es: COP x")
-}
 console.log("Probando Pedido\n\n")
-console.log(`${pedidoDigital.detallesPedido}`)
+console.log(`${pedidoDigital.detallesPedido}. El cliente es "${pedidoDigital.cliente.nombre}" y el repartidor es "${pedidoDigital.repartidor.nombre}"`)
