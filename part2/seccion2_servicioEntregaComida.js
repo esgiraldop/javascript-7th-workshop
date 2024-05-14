@@ -115,8 +115,21 @@ Repartidor.prototype.actualizarUbicacion = function(){
     console.log("Actualizando ubicación...")
 }
 
-Repartidor.prototype.eliminarUsuario = function(){
-    console.log("Eliminando usuario...")
+Repartidor.prototype.completarEntrega = function(){
+    console.log("Completando entrega...")
+}
+
+Repartidor.prototype.actualizarEstado = function(){
+    console.log("Actualizando estado...")
+}
+
+// Creando prototipo pedido
+function Pedido(cliente, restaurante, detallesPedido, estadoPedido, repartidor){
+    this.cliente = cliente
+    this.restaurante = restaurante
+    this.detallesPedido = detallesPedido
+    this.estadoPedido = estadoPedido
+    this.repartidor = repartidor
 }
 
 // PROBANDO PROTOTIPOS
@@ -136,3 +149,18 @@ console.log(`${restaurante1.menuFisico.nombre} del ${restaurante1.nombre}`)
 restaurante2 = new RestauranteDigital("El sancochadero virtual", "http://avsiempreviva.com.co", menu2)
 restaurante2.agregarPlato("sancoshito virtual")
 console.log(`${restaurante2.menuQr.nombre} del ${restaurante2.nombre}`)
+
+// Probando la clase Pedido que contiene varias otras clases ya definidas
+cliente1 = new Cliente("Erick el cliente", "erickcliente@gmail.com", 123, "av siempre viva", 12345678)
+repartidor1 = new Repartidor("Fede el repartidor", "federepartidor@gmail.com", 123, "mazda 323", true)
+pedidoDigital = new Pedido(cliente1, repartidor1, "Este es un pedido virtual de aguacates", "En curso", repartidor1)
+
+pedidoDigital.prototype.actualizarEstado = function (){
+    console.log("Actualizando estado del pedido...")
+}
+
+pedidoDigital.prototype.calcularTotal = function (){
+    console.log("El valor total del pedido es: COP x")
+}
+console.log("Probando Pedido\n\n")
+console.log(`${pedidoDigital.detallesPedido}`)
